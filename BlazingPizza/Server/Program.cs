@@ -7,13 +7,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Microsoft.Extensions.DependencyInjection;
+using BlazingPizza.Server.Models;
+
 namespace BlazingPizza.Server
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var Host = CreateHostBuilder(args).Build();
+            var ScopeFactory = 
+                Host.Services.GetRequiredService<IServiceScopeFactory>();
+
+            using(var Scope = ScopeFactory.CreateScope())
+            {
+                var Context = Scope.ServiceProvider.GetRequiredService<PizzaStoreContext>();
+                if (Context.Specials.Count() == 0)
+                {
+                    SeedData.Initialize(Context);
+                }
+            }
+            Host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
