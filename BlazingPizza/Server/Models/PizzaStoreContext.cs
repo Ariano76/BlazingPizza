@@ -12,7 +12,8 @@ namespace BlazingPizza.Server.Models
         public DbSet<PizzaSpecial> Specials { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(.);database=PizzaStore");
+            optionsBuilder.UseSqlServer(@"Server=.;Database=PizzaStore;Trusted_Connection=True");
+            //optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;database=PizzaStore;");
         }
     }
 }

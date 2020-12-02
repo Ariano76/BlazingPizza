@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazingPizza.Server.Migrations
 {
     [DbContext(typeof(PizzaStoreContext))]
-    [Migration("20201130033240_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20201202022356_InitialPH")]
+    partial class InitialPH
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

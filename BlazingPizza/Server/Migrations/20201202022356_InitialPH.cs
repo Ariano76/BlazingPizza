@@ -2,7 +2,7 @@
 
 namespace BlazingPizza.Server.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialPH : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
