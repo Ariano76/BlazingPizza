@@ -7,6 +7,6 @@ namespace BlazingPizza.Server.Controllers
 {
     public class Demo
     {
-        string nombre = "Percy Herrera M";
+        string nombre = "Percy Herrera Mogrovejo";
     }
 }
