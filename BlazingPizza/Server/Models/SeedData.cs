@@ -12,7 +12,8 @@ namespace BlazingPizza.Server.Models
         {
             var Specials = new PizzaSpecial[]
             {
-                new PizzaSpecial {
+                new PizzaSpecial 
+                {
                     Name = "Pizza clásica de queso",
                     Description = "Es de queso y delicioso. ¿Por qué no querrías una?",
                     BasePrice = 189.99m,
@@ -71,102 +72,102 @@ namespace BlazingPizza.Server.Models
                     Name = "Queso extra",
                     Price = 47.50m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Tocino de pavo",
                     Price = 56.80m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Tocino de jabalí",
                     Price = 56.80m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Tocino de ternera",
                     Price = 56.80m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Té y bollos",
                     Price = 95.00m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Bollos recién horneados",
                     Price = 85.50m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Pimiento",
                     Price = 19.00m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Cebolla",
                     Price = 19.00m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Champiñones",
                     Price = 19.00m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Pepperoni",
                     Price = 19.00m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Salchicha de pato",
                     Price = 60.80m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Albóndigas de venado",
                     Price = 47.50m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Cubierta de langosta",
                     Price = 1225.50m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Caviar de esturión",
                     Price = 1933.25m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Corazones de alcachofa",
                     Price = 64.60m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Tomates frescos",
                     Price = 39.00m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Albahaca",
                     Price = 39.00m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Filete",
                     Price = 161.50m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Pimientos picantes",
                     Price = 79.80m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Pollo búfalo",
                     Price = 95.00m
                 },
-                new Topping
+                new Topping()
                 {
                     Name = "Queso azul",
                     Price = 47.50m
