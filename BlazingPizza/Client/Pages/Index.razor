@@ -7,7 +7,7 @@
         {
             foreach (var Special in Specials)
             {
-                <li @onclick="@(()=>ShowConfigurePizzaDialog(Special))" 
+                <li @onclick="@(()=>ShowConfigurePizzaDialog(Special))"
                     style="background-image:url('@Special.ImageUrl')">
                     <div class="pizza-info">
                         <span class="title">@Special.Name</span>
@@ -22,11 +22,39 @@
     </ul>
 </div>
 
+<div class="sidebar">
+    @if (Order.Pizzas.Any())
+    {
+        <div class="order-contents">
+            <h2>Tu orden</h2>
+            @foreach (var ConfiguredPizza in Order.Pizzas)
+            {
+                <ConfiguredPizzaItem Pizza="ConfiguredPizza" 
+                                     OnRemoved="@(() => RemoveConfiguredPizza(ConfiguredPizza))" />
+            }
+        </div>
+    }
+    else
+    {
+        <div class="empty-cart">Selecciona una pizza<br>para empezar</div>
+    } 
+    <div class="order-total @(Order.Pizzas.Any() ? "" : "hidden")">
+        Total:
+        <span class="total-price">@Order.GetFormattedTotalPrice()</span>
+        <button class="btn btn-warning"
+                disabled="@(Order.Pizzas.Count == 0)" @onclick="@PlaceOrder">
+            Ordenar >
+        </button>
+    </div>
+</div>
+
 @* Esta ventana aparecera por encima de la pagina *@
 
 @if (ShowingConfigureDialog)
 {
-    <ConfigurePizzaDialog Pizza="ConfiguringPizza"/>
+    <ConfigurePizzaDialog Pizza="ConfiguringPizza"
+                          OnCancel="CancelConfigurePizzaDialog"
+                          OnConfirm="ConfirmConfigurePizzaDialog" />
 }
 
 
@@ -35,6 +63,7 @@
     List<PizzaSpecial> Specials;
     Pizza ConfiguringPizza;
     bool ShowingConfigureDialog;
+    Order Order = new Order();
 
 
     protected async override Task OnInitializedAsync()
@@ -57,6 +86,32 @@
         ShowingConfigureDialog = true;
 
     }
+
+    void CancelConfigurePizzaDialog()
+    {
+        ConfiguringPizza = null;
+        ShowingConfigureDialog = false;
+    }
+
+    void ConfirmConfigurePizzaDialog()
+    {
+        Order.Pizzas.Add(ConfiguringPizza);
+        ConfiguringPizza = null;
+        ShowingConfigureDialog = false;
+
+    }
+
+    void RemoveConfiguredPizza(Pizza pizza)
+    {
+        Order.Pizzas.Remove(pizza);
+    }
+
+    async Task PlaceOrder()
+    {
+        await HttpClient.PostAsJsonAsync("orders", Order);
+        Order = new Order();
+    }
+
 }
 
 
