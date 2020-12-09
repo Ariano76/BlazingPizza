@@ -15,6 +15,9 @@ namespace BlazingPizza.Shared
         public List<Pizza> Pizzas { get; set; } = new List<Pizza>();
         public decimal GetTotalPrice() => Pizzas.Sum(p => p.GetTotalPrice());
         public string GetFormattedTotalPrice() => GetTotalPrice().ToString("0.00");
+        public string GetFormattedCreatedTime() =>
+            CreatedTime.ToString("D",
+                new System.Globalization.CultureInfo("es"));
 
     }
 
