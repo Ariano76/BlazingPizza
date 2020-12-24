@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using BlazingPizza.Client.Services;
 
 namespace BlazingPizza.Client
 {
@@ -15,6 +16,7 @@ namespace BlazingPizza.Client
         public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
+            builder.Services.AddScoped<OrderState>();
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddTransient(
@@ -22,6 +24,8 @@ namespace BlazingPizza.Client
                     BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
             await builder.Build().RunAsync();
+
+
         }
     }
 }
